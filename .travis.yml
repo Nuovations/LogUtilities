@@ -28,6 +28,7 @@ compiler:
   - clang
   - gcc
 os:
+  - linux
   - osx
 
 before_install:
