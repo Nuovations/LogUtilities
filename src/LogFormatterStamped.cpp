@@ -33,6 +33,16 @@ using namespace std;
 #include <pthread.h>
 #include <unistd.h>
 
+// Preprocessor Definitions
+
+#if __linux__
+#define kPThreadSelfFormat "%lu"
+#elif __APPLE__
+#define kPThreadSelfFormat "%p"
+#else
+#error "Unknown pthread_self format specifier for this platform."
+#endif // __linux__
+
 
 namespace Nuovations
 {
@@ -140,7 +150,7 @@ Stamped::Format(Level inLevel, const char * inFormat, std::va_list inList)
         localtime_r(&theTime, &theDate);
 
         status = asprintf(&p,
-                          "%04d-%02d-%02d %02d:%02d:%02d [%d:%p] (%u) ",
+                          "%04d-%02d-%02d %02d:%02d:%02d [%d:" kPThreadSelfFormat "] (%u) ",
                           theDate.tm_year + 1900,
                           theDate.tm_mon,
                           theDate.tm_mday,
