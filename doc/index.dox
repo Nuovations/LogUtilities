@@ -170,9 +170,9 @@
  * --> a(void)
  *     --> b(void)
  *         --> c(void)
- *         <--
- *     <--
- * <--
+ *         <-- c(void)
+ *     <-- b(void)
+ * <-- a(void)
  * ```
  *
  * whereas the stateless, non-scoped tracer:
@@ -207,9 +207,9 @@
  * --> a(void)
  * --> b(void)
  * --> c(void)
- * <--
- * <--
- * <--
+ * <-- c(void)
+ * <-- b(void)
+ * <-- a(void)
  * ```
  *
  * The tracer objects may be used independently of the C preprocessor
