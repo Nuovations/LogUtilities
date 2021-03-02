@@ -25,6 +25,7 @@
 #include <string>
 
 #include <fcntl.h>
+#include <limits.h>
 #include <unistd.h>
 
 #include <sys/stat.h>

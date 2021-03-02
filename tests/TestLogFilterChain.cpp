@@ -26,6 +26,7 @@
 #include <LogUtilities/LogFilterNever.hpp>
 #include <LogUtilities/LogFilterQuiet.hpp>
 
+#include <limits.h>
 #include <stdint.h>
 
 #include <cppunit/TestAssert.h>

@@ -22,6 +22,8 @@
 
 #include <LogUtilities/LogFilterAlways.hpp>
 
+#include <limits.h>
+
 #include <cppunit/TestAssert.h>
 #include <cppunit/extensions/HelperMacros.h>
 

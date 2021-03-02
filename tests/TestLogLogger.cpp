@@ -33,6 +33,7 @@
 #include <LogUtilities/LogWriterStdout.hpp>
 
 #include <fcntl.h>
+#include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
 

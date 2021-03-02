@@ -24,6 +24,7 @@
 #include <LogUtilities/LogWriterDescriptor.hpp>
 
 #include <fcntl.h>
+#include <limits.h>
 #include <stdint.h>
 #include <unistd.h>
 
