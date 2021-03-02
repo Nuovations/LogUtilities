@@ -32,6 +32,11 @@ die()
 
 case "${TRAVIS_OS_NAME}" in
 
+    linux)
+        sudo apt-get install autoconf automake libtool libboost-dev libcppunit-dev
+
+        ;;
+
     osx)
         HOMEBREW_NO_AUTO_UPDATE=1 brew install autoconf automake libtool boost cppunit
 
