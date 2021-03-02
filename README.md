@@ -11,7 +11,7 @@ Nuovations Log Utilities
 
 # Introduction
 
-Nuovations Log Utilities provides a toolkit logging unstructured
+Nuovations Log Utilities provides a toolkit for logging unstructured
 messages portably to one or more output destinations as well as
 related debug and development utilities built atop of that toolkit.
 

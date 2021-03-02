@@ -21,7 +21,7 @@
  *
  *  @section introduction Introduction
  *
- *  This package provides a toolkit logging unstructured messages
+ *  This package provides a toolkit for logging unstructured messages
  *  portably to one or more output destinations as well as related
  *  debug and development utilities built atop of that toolkit.
  *
