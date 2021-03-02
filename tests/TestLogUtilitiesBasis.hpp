@@ -46,5 +46,3 @@ private:
 };
 
 #endif // LOGUTILITIES_TESTLOGUTILITIESBASIS_HPP
-
-
