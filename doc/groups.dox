@@ -1,0 +1,73 @@
+/*
+ *    Copyright (c) 2021 Nuovation System Designs, LLC
+ *    All rights reserved.
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
+/**
+ *  @defgroup filter Filter
+ *
+ *  Objects which determine whether or not to pass or reject a log
+ *  message.
+ *
+ */
+
+/**
+ *  @defgroup formatter Formatter
+ *
+ *  Objects which perform output format conversion on a printf-style
+ *  log message format string with arguments from a variadic or
+ *  variable argument list.
+ *
+ */
+
+/**
+ *  @defgroup function-utilities Function Utilities
+ *
+ *  Interfaces and objects for logging the execution of functions and
+ *  methods.
+ *
+ */
+
+/**
+ *  @defgroup indenter Indenter
+ *
+ *  Objects which potentially insert an indent into a log message
+ *  after it is formatted but before it is written.
+ *
+ */
+
+/**
+ *  @defgroup memory-utilities Memory Utilities
+ *
+ *  Interfaces and objects for logging the contents of memory.
+ *
+ */
+
+/**
+ *  @defgroup utilities Utilities
+ *
+ *  Adjunct utility interfaces and objects that work with or are built
+ *  on top of loggers.
+ *
+ */
+
+/**
+ *  @defgroup writer Writer
+ *
+ *  Objects which perform the act of writing a log message to one or
+ *  more output destinations.
+ *
+ */

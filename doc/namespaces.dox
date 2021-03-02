@@ -1,0 +1,97 @@
+/*
+ *    Copyright (c) 2021 Nuovation System Designs, LLC
+ *    All rights reserved.
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
+/**
+ *  @namespace Filter
+ *
+ *  @brief
+ *    This is the namespace for filter objects which determine whether
+ *    or not to pass or reject a log message.
+ *
+ */
+
+/**
+ *  @namespace Formatter
+ *
+ *  @brief
+ *    This is the namespace for formatter objects which perform output
+ *    format conversion on a printf-style log message format string
+ *    with arguments from a variadic or variable argument list.
+ *
+ */
+
+/**
+ *  @namespace Function
+ *
+ *  @brief
+ *    This contains interfaces and objects for logging the execution
+ *    of functions and methods.
+ *
+ */
+
+/**
+ *  @namespace Indenter
+ *
+ *  @brief
+ *    This is the namespace for indenter objects which potentially
+ *    insert an indent into a log message after it is formatted but
+ *    before it is written.
+ *
+ */
+
+/**
+ *  @namespace Log
+ *
+ *  @brief
+ *    This is the top-level namespace for this package.
+ *
+ */
+
+/**
+ *  @namespace Memory
+ *
+ *  @brief
+ *    This contains interfaces and objects for logging the
+ *    contents of memory.
+ *
+ */
+
+/**
+ *  @namespace Nuovations
+ *
+ *  @brief
+ *    This is the outermost namespace for all Nuovations software.
+ *
+ */
+
+/**
+ *  @namespace Utilities
+ *
+ *  @brief
+ *    This is the namespace for adjunct utility interfaces and objects
+ *    that work with or are built on top of loggers.
+ */
+
+/**
+ *  @namespace Writer
+ *
+ *  @brief
+ *    This is the namespace for writer objects which perform the act
+ *    of writing a log message to one or more output destinations.
+ *
+ */

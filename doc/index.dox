@@ -1,0 +1,235 @@
+/*
+ *    Copyright (c) 2021 Nuovation System Designs, LLC
+ *    All rights reserved.
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
+/**
+ *  @mainpage notitle
+ *
+ *  @section introduction Introduction
+ *
+ *  This package provides a toolkit logging unstructured messages
+ *  portably to one or more output destinations as well as related
+ *  debug and development utilities built atop of that toolkit.
+ *
+ *  All too often when building software, there is a need for
+ *  different logging contexts and output destinations. Sometimes,
+ *  software is run interactively and there is a desire to log to
+ *  standard error or standard output. Other times, software is run in
+ *  the background and there is a desire to log to syslog or some
+ *  other platform-specific facility. Other times, there is a desire
+ *  to do both or neither. Other times, there is a need to create a
+ *  build that elides some or all log messages entirely, for
+ *  space-savings or other reasons.
+ *
+ *  %Nuovations %Log %Utilities provides a means to make these goals
+ *  easily achievable and their approach uniform and consistent.
+ *
+ *  At the heart of this package lies the concept of the @link
+ *  Nuovations::Log::Logger Logger @endlink which is primary
+ *  application interface. A logger consists of the following
+ *  sub-objects:
+ *
+ *    1. @link filter Filter @endlink
+ *    2. @link formatter Formatter @endlink
+ *    3. @link indenter Indenter @endlink
+ *    4. @link writer Writer @endlink
+ *
+ *  The filter sub-object determines, based on either the log message
+ *  level, log message content, or other state whether any arbitrary
+ *  log message will be passsed on to the formatter, indenter, and
+ *  writer.
+ *
+ *  The formatter sub-object performs output format conversion on a
+ *  printf-style log message format string with arguments from a
+ *  variadic or variable argument list.
+ *
+ *  The indenter sub-object potentially inserts an indent into a log
+ *  message after it is formatted but before it is written.
+ *
+ *  The writer sub-object performs the act of writing the formatted
+ *  and indented log message to one or more output destinations.
+ *
+ *  Further, filter and writer sub-objects may also be a chain of
+ *  several such objects. In the case of writers, for example, this
+ *  easily allows for sending a log message both to standard error or
+ *  output and syslog with one application level call.
+ *
+ *  While it is possible to create your own arbitrary logger instances
+ *  composed from filter, formatter, indenter, and writer objects in
+ *  this pacakge or to create arbitrary and new such objects, this
+ *  package pre-defines three global singleton instances:
+ *
+ *    - #Debug()
+ *    - #Info()
+ *    - #Error()
+ *
+ *  Each of these global singleton instances may be used as-is or may
+ *  have any or all of their filters, formatters, indenters, or
+ *  writers replaced, using logger methods such as @link Nuovations::Log::Logger::SetWriter SetWriter @endlink to, for
+ *  example, replace the writer in such a global instance.
+ *
+ *  The #Debug() and #Info() singleton instances consist of:
+ *
+ *    - @link filter Filter @endlink
+ *         - @link Nuovations::Log::Filter::Chain Chain @endlink
+ *              - @link Nuovations::Log::Filter::Level Level @endlink
+ *              - @link Nuovations::Log::Filter::Quiet Quiet @endlink
+ *    - @link formatter Formatter @endlink
+ *         - @link Nuovations::Log::Formatter::Plain Plain @endlink
+ *    - @link indenter Indenter @endlink
+ *         - @link Nuovations::Log::Indenter::Tab Tab @endlink
+ *    - @link writer Writer @endlink
+ *         - @link Nuovations::Log::Writer::Chain Chain @endlink
+ *              - @link Nuovations::Log::Writer::Stdout Standard Output @endlink
+ *              - @link Nuovations::Log::Writer::Syslog Syslog @endlink
+ *
+ *  The #Error() singleton instance consists of:
+ *
+ *    - @link filter Filter @endlink
+ *         - @link Nuovations::Log::Filter::Always Always @endlink
+ *    - @link formatter Formatter @endlink
+ *         - @link Nuovations::Log::Formatter::Plain Plain @endlink
+ *    - @link indenter Indenter @endlink
+ *         - @link Nuovations::Log::Indenter::Tab Tab @endlink
+ *    - @link writer Writer @endlink
+ *         - @link Nuovations::Log::Writer::Chain Chain @endlink
+ *              - @link Nuovations::Log::Writer::Stderr Standard Error @endlink
+ *              - @link Nuovations::Log::Writer::Syslog Syslog @endlink
+ *
+ *  @subsection utilities Utilities
+ *
+ *  In addition to the logger and its constituent objects, this
+ *  package includes two suites of utility interfaces and objects to
+ *  assist with debugging:
+ *
+ *   - @link function-utilities Function @endlink
+ *   - @link memory-utilities Memory @endlink
+ *
+ *  @subsubsection function Function
+ *
+ *  The function utilities in this package work with the global Debug
+ *  logger instance and supporting instrumented C preprocessor macros
+ *  to assist tracing, through log messages, program execution flow as
+ *  function or method calls are entered and exited.
+ *
+ *  Two tracer objects are available:
+ *
+ *   - Stateless, non-scoped
+ *   - Stateful, scoped
+ *
+ *  and either may be declared with an explicit log level or without,
+ *  using the default log level. The tracers are identical in their
+ *  operation save for stateful operation of the later which results
+ *  in a nested logging as the call stack deepens and shallows, using
+ *  the indent functionality of the logger.
+ *
+ *  With that in mind, code such as that below using the stateful,
+ *  scoped tracer, compiled with -DDEBUG=1 asserted:
+ *
+ *  ~~~{.cpp}
+ *  static void
+ *  c(void)
+ *  {
+ *      DeclareScopedFunctionTracer(theScopedTracer);
+ *  }
+ *
+ *  static void
+ *  b(void)
+ *  {
+ *      DeclareScopedFunctionTracer(theScopedTracer);
+ *
+ *      c();
+ *  }
+ *
+ *  static void
+ *  a(void)
+ *  {
+ *      DeclareScopedFunctionTracer(theScopedTracer);
+ *
+ *      b();
+ *  }
+ *  ~~~
+ *
+ * would produce the following output when `a()` is invoked:
+ *
+ * ```
+ * --> a(void)
+ *     --> b(void)
+ *         --> c(void)
+ *         <--
+ *     <--
+ * <--
+ * ```
+ *
+ * whereas the stateless, non-scoped tracer:
+ *
+ *  ~~~{.cpp}
+ *  static void
+ *  c(void)
+ *  {
+ *      DeclareFunctionTracer(theTracer);
+ *  }
+ *
+ *  static void
+ *  b(void)
+ *  {
+ *      DeclareFunctionTracer(theTracer);
+ *
+ *      c();
+ *  }
+ *
+ *  static void
+ *  a(void)
+ *  {
+ *      DeclareFunctionTracer(theTracer);
+ *
+ *      b();
+ *  }
+ *  ~~~
+ *
+ * would produce the following output:
+ *
+ * ```
+ * --> a(void)
+ * --> b(void)
+ * --> c(void)
+ * <--
+ * <--
+ * <--
+ * ```
+ *
+ * The tracer objects may be used independently of the C preprocessor
+ * wrappers; however, the caller then must manually populate the name
+ * for the function or method being traced using `__func__`,
+ * `__FUNCTION__`, `__PRETTY_FUNCTION__` (which is what the wrapper
+ * macros use), or some other arbitrary string.
+ *
+ * @subsubsection memory Memory
+ *
+ * The memory utilities in this package work either with an arbitrary
+ * logger instance or with the global #Debug() logger singleton
+ * instance and may be used to log the contents of memory as 1-, 2-,
+ * 4- or 8-byte units in a format similar to the `od -A x -t x1z -v`
+ * or `hexdump` command line interfaces.
+ *
+ * In addition, as with the function tracers, there is a conditional C
+ * preprocessor macro, #LogMemoryDebug, that uses the global
+ * #Debug() logger singleton instance and that is conditionally operative
+ * when -DDEBUG=1 is asserted.
+ *
+ */
+
