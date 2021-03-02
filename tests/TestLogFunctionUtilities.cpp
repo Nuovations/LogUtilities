@@ -33,6 +33,7 @@
 #include <string>
 
 #include <fcntl.h>
+#include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -95,13 +96,13 @@ a(void)
 static void
 c(const Log::Level & inLevel)
 {
-    const Log::Utilities::Function::ScopedTracer lScopedTracer(__PRETTY_FUNCTION__, inLevel);
+    const Log::Utilities::Function::ScopedTracer lScopedTracer(__FUNCTION__, inLevel);
 }
 
 static void
 b(const Log::Level & inLevel)
 {
-    const Log::Utilities::Function::ScopedTracer lScopedTracer(__PRETTY_FUNCTION__, inLevel);
+    const Log::Utilities::Function::ScopedTracer lScopedTracer(__FUNCTION__, inLevel);
 
     c(inLevel);
 }
@@ -109,7 +110,7 @@ b(const Log::Level & inLevel)
 static void
 a(const Log::Level & inLevel)
 {
-    const Log::Utilities::Function::Tracer lTracer(__PRETTY_FUNCTION__, inLevel);
+    const Log::Utilities::Function::Tracer lTracer(__FUNCTION__, inLevel);
 
     b(inLevel);
 }
@@ -159,14 +160,14 @@ void
 TestLogFunctionUtilities :: TestFunctionTracerWithLevel(void)
 {
     const string kExpected =
-        "--> void TestLogFunctionUtilities::TestFunctionTracerWithLevel()\n"
-        "--> void a(const Log::Level &)\n"
-        "--> void b(const Log::Level &)\n"
-        "	--> void c(const Log::Level &)\n"
-        "	<-- void c(const Log::Level &)\n"
-        "<-- void b(const Log::Level &)\n"
-        "<-- void a(const Log::Level &)\n"
-        "<-- void TestLogFunctionUtilities::TestFunctionTracerWithLevel()\n";
+        "--> TestFunctionTracerWithLevel\n"
+        "--> a\n"
+        "--> b\n"
+        "	--> c\n"
+        "	<-- c\n"
+        "<-- b\n"
+        "<-- a\n"
+        "<-- TestFunctionTracerWithLevel\n";
     Log::Filter::Always   lAlwaysFilter;
     Log::Indenter::Tab    lTabIndenter(Log::Indenter::String::Flags::kEvery);
     Log::Formatter::Plain lPlainFormatter;
@@ -186,7 +187,7 @@ TestLogFunctionUtilities :: TestFunctionTracerWithLevel(void)
 
         {
             const Log::Level                       kLevel = 0;
-            const Log::Utilities::Function::Tracer lTracer(__PRETTY_FUNCTION__, kLevel);
+            const Log::Utilities::Function::Tracer lTracer(__FUNCTION__, kLevel);
 
             a(kLevel);
         }
@@ -247,14 +248,14 @@ void
 TestLogFunctionUtilities :: TestScopedFunctionTracerWithLevel(void)
 {
     const string kExpected =
-        "--> void TestLogFunctionUtilities::TestScopedFunctionTracerWithLevel()\n"
-        "--> void a(const Log::Level &)\n"
-        "	--> void b(const Log::Level &)\n"
-        "		--> void c(const Log::Level &)\n"
-        "		<-- void c(const Log::Level &)\n"
-        "	<-- void b(const Log::Level &)\n"
-        "<-- void a(const Log::Level &)\n"
-        "<-- void TestLogFunctionUtilities::TestScopedFunctionTracerWithLevel()\n";
+        "--> TestScopedFunctionTracerWithLevel\n"
+        "--> a\n"
+        "	--> b\n"
+        "		--> c\n"
+        "		<-- c\n"
+        "	<-- b\n"
+        "<-- a\n"
+        "<-- TestScopedFunctionTracerWithLevel\n";
     Log::Filter::Always   lAlwaysFilter;
     Log::Indenter::Tab    lTabIndenter(Log::Indenter::String::Flags::kEvery);
     Log::Formatter::Plain lPlainFormatter;
@@ -274,7 +275,7 @@ TestLogFunctionUtilities :: TestScopedFunctionTracerWithLevel(void)
 
         {
             const Log::Level                             kLevel = 0;
-            const Log::Utilities::Function::ScopedTracer lScopedTracer(__PRETTY_FUNCTION__, kLevel);
+            const Log::Utilities::Function::ScopedTracer lScopedTracer(__FUNCTION__, kLevel);
             const unsigned int                           kExpectedDepth = 1;
             const unsigned int                           kActualDepth   = lScopedTracer.GetDepth();
 
