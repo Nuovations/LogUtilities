@@ -33,7 +33,8 @@ die()
 case "${TRAVIS_OS_NAME}" in
 
     linux)
-        sudo apt-get install autoconf automake libtool libboost-dev libcppunit-dev
+        sudo apt-get update
+        sudo apt-get -y install autoconf automake libtool libboost-dev libcppunit-dev
 
         ;;
 
