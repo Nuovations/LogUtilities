@@ -23,6 +23,8 @@
 
 language: cpp
 
+dist: bionic
+
 sudo: false
 compiler:
   - clang
