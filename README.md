@@ -123,7 +123,7 @@ On Mac OS X, these dependencies can be installed and satisfied using
 
 There are numerous avenues for Log Utilities support:
 
-  * Bugs and feature requests — [submit to the Issue Tracker](https://github.com/Nuovations/Log Utilities/issues)
+  * Bugs and feature requests — [submit to the Issue Tracker](https://github.com/Nuovations/LogUtilities/issues)
 
 # Versioning
 
