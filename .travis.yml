@@ -23,7 +23,7 @@
 
 language: cpp
 
-dist: bionic
+dist: trusty
 
 sudo: false
 compiler:
