@@ -68,7 +68,7 @@ void
 TestLogWriterStdout :: TestStdoutWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Standard Output Stream w/o level.\n"
+        "Standard Output Stream w/o level.\n"
         "Standard Output Stream w/ level 0.\n"
         "Standard Output Stream w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];

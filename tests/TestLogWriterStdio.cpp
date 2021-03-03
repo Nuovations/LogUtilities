@@ -72,7 +72,7 @@ void
 TestLogWriterStdio :: TestStderrWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Standard I/O Stream (Error) w/o level.\n"
+        "Standard I/O Stream (Error) w/o level.\n"
         "Standard I/O Stream (Error) w/ level 0.\n"
         "Standard I/O Stream (Error) w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];
@@ -111,7 +111,7 @@ void
 TestLogWriterStdio :: TestStdoutWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Standard I/O Stream (Out) w/o level.\n"
+        "Standard I/O Stream (Out) w/o level.\n"
         "Standard I/O Stream (Out) w/ level 0.\n"
         "Standard I/O Stream (Out) w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];
@@ -150,7 +150,7 @@ void
 TestLogWriterStdio :: TestPathWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Standard I/O Stream (Arbitrary) w/o level.\n"
+        "Standard I/O Stream (Arbitrary) w/o level.\n"
         "Standard I/O Stream (Arbitrary) w/ level 0.\n"
         "Standard I/O Stream (Arbitrary) w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];

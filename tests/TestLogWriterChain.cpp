@@ -107,7 +107,7 @@ void
 TestLogWriterChain :: TestWriterChain(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Chained writer w/o level.\n"
+        "Chained writer w/o level.\n"
         "Chained writer w/ level 0.\n"
         "Chained writer w/ level UINT_MAX.\n";
     char                    lPathBufferA[PATH_MAX];

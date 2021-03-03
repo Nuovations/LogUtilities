@@ -96,7 +96,9 @@ Stdio::Write(Level inLevel, const char * inMessage)
 {
     (void)inLevel;
 
-    fputs(inMessage, mStream);
+	if (inMessage != NULL) {
+		fputs(inMessage, mStream);
+	}
 }
 
 /**

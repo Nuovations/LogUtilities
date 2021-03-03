@@ -106,7 +106,7 @@ void
 TestLogWriterDescriptor :: TestStderrWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Standard Error w/o level.\n"
+        "Standard Error w/o level.\n"
         "Standard Error w/ level 0.\n"
         "Standard Error w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];
@@ -145,7 +145,7 @@ void
 TestLogWriterDescriptor :: TestStdoutWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Standard Output w/o level.\n"
+        "Standard Output w/o level.\n"
         "Standard Output w/ level 0.\n"
         "Standard Output w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];
@@ -184,7 +184,7 @@ void
 TestLogWriterDescriptor :: TestPathWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Path Descriptor w/o level.\n"
+        "Path Descriptor w/o level.\n"
         "Path Descriptor w/ level 0.\n"
         "Path Descriptor w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];

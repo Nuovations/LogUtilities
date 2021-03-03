@@ -185,7 +185,7 @@ void
 TestLogWriterPath :: TestPathWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Path w/o level.\n"
+        "Path w/o level.\n"
         "Path w/ level 0.\n"
         "Path w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];

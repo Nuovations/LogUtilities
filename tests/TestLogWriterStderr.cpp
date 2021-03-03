@@ -68,7 +68,7 @@ void
 TestLogWriterStderr :: TestStderrWriter(void)
 {
     const std::string kExpected =
-        "(null)(null)(null)Standard Error Stream w/o level.\n"
+        "Standard Error Stream w/o level.\n"
         "Standard Error Stream w/ level 0.\n"
         "Standard Error Stream w/ level UINT_MAX.\n";
     char              lPathBuffer[PATH_MAX];
