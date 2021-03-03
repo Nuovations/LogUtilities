@@ -23,12 +23,8 @@
 
 language: cpp
 
-dist: focal
-
 sudo: false
-compiler:
-  - clang
-  - gcc
+
 os:
   - linux
   - osx
