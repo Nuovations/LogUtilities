@@ -1,8 +1,9 @@
-[![Build Status][LogUtilities-travis-svg]][LogUtilities-travis]
+[![Build Status][LogUtilities-github-action-svg]][LogUtilities-github-action]
 [![Coverage Status][LogUtilities-codecov-svg]][LogUtilities-codecov]
 
-[LogUtilities-travis]: https://travis-ci.com/Nuovations/LogUtilities
-[LogUtilities-travis-svg]: https://travis-ci.com/Nuovations/LogUtilities.svg?branch=main
+[LogUtilities-github]: https://github.com/nuovations/LogUtilities
+[LogUtilities-github-action]: https://github.com/nuovations/LogUtilities/actions?query=workflow%3Abuild+branch%3Amain+event%3Apush
+[LogUtilities-github-action-svg]: https://github.com/nuovations/LogUtilities/actions/workflows/build.yml/badge.svg?branch=main&event=push
 [LogUtilities-codecov]: https://codecov.io/gh/Nuovations/LogUtilities
 [LogUtilities-codecov-svg]: https://codecov.io/gh/Nuovations/LogUtilities/branch/main/graph/badge.svg
 
