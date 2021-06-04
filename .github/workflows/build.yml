@@ -27,6 +27,39 @@ on: [push, pull_request]
 
 jobs:
 
+  linux:
+    runs-on: ubuntu-latest
+    name: "Linux ${{matrix.compiler['name']}}"
+    strategy:
+      matrix:
+        compiler:
+          - { name: GCC,        c: gcc,   cxx: g++ }
+    env:
+      CC: ${{matrix.compiler['c']}}
+      CXX: ${{matrix.compiler['cxx']}}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install autoconf automake libtool libboost-dev libcppunit-dev
+    - name: Bootstrap and Configure
+      run: |
+        ./bootstrap-configure -C --enable-coverage --with-boost=/usr/local
+    - name: Coding Style
+      run: |
+        make -j pretty-check
+    - name: Build
+      run: |
+        make -j
+    - name: Test
+      run: |
+        make -j check
+    - name: Upload Coverage
+      run: |
+        bash <(curl -s https://codecov.io/bash) -g 'include/*' -g 'src/*' -G 'tests/*'
+
   macos:
     runs-on: macos-10.15
     name: "macOS ${{matrix.compiler['name']}}"
