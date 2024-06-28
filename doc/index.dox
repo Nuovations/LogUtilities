@@ -73,16 +73,17 @@
  *  this pacakge or to create arbitrary and new such objects, this
  *  package pre-defines three global singleton instances:
  *
- *    - #Debug()
- *    - #Info()
- *    - #Error()
+ *    - #Nuovations::Log::Debug()
+ *    - #Nuovations::Log::Info()
+ *    - #Nuovations::Log::Error()
  *
  *  Each of these global singleton instances may be used as-is or may
  *  have any or all of their filters, formatters, indenters, or
  *  writers replaced, using logger methods such as @link Nuovations::Log::Logger::SetWriter SetWriter @endlink to, for
  *  example, replace the writer in such a global instance.
  *
- *  The #Debug() and #Info() singleton instances consist of:
+ *  The #Nuovations::Log::Debug() and #Nuovations::Log::Info()
+ *  singleton instances consist of:
  *
  *    - @link filter Filter @endlink
  *         - @link Nuovations::Log::Filter::Chain Chain @endlink
