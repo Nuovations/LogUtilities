@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2021 Nuovation System Designs, LLC
+ *    Copyright (c) 2021-2024 Nuovation System Designs, LLC
  *    All rights reserved.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,16 +73,17 @@
  *  this pacakge or to create arbitrary and new such objects, this
  *  package pre-defines three global singleton instances:
  *
- *    - #Debug()
- *    - #Info()
- *    - #Error()
+ *    - #Nuovations::Log::Debug()
+ *    - #Nuovations::Log::Info()
+ *    - #Nuovations::Log::Error()
  *
  *  Each of these global singleton instances may be used as-is or may
  *  have any or all of their filters, formatters, indenters, or
  *  writers replaced, using logger methods such as @link Nuovations::Log::Logger::SetWriter SetWriter @endlink to, for
  *  example, replace the writer in such a global instance.
  *
- *  The #Debug() and #Info() singleton instances consist of:
+ *  The #Nuovations::Log::Debug() and #Nuovations::Log::Info()
+ *  singleton instances consist of:
  *
  *    - @link filter Filter @endlink
  *         - @link Nuovations::Log::Filter::Chain Chain @endlink
@@ -97,7 +98,7 @@
  *              - @link Nuovations::Log::Writer::Stdout Standard Output @endlink
  *              - @link Nuovations::Log::Writer::Syslog Syslog @endlink
  *
- *  The #Error() singleton instance consists of:
+ *  The #Nuovations::Log::Error() singleton instance consists of:
  *
  *    - @link filter Filter @endlink
  *         - @link Nuovations::Log::Filter::Always Always @endlink
@@ -221,15 +222,15 @@
  * @subsubsection memory Memory
  *
  * The memory utilities in this package work either with an arbitrary
- * logger instance or with the global #Debug() logger singleton
- * instance and may be used to log the contents of memory as 1-, 2-,
- * 4- or 8-byte units in a format similar to the `od -A x -t x1z -v`
- * or `hexdump` command line interfaces.
+ * logger instance or with the global #Nuovations::Log::Debug() logger
+ * singleton instance and may be used to log the contents of memory as
+ * 1-, 2-, 4- or 8-byte units in a format similar to the `od -A x -t
+ * x1z -v` or `hexdump` command line interfaces.
  *
  * In addition, as with the function tracers, there is a conditional C
  * preprocessor macro, #LogMemoryDebug, that uses the global
- * #Debug() logger singleton instance and that is conditionally operative
- * when -DDEBUG=1 is asserted.
+ * #Nuovations::Log::Debug() logger singleton instance and that is
+ * conditionally operative when -DDEBUG=1 is asserted.
  *
  */
 

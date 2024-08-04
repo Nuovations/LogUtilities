@@ -98,6 +98,11 @@ namespace Nuovations
             }
 
         public:
+            /**
+             *  @brief
+             *    This is the class destructor.
+             *
+             */
             virtual ~Chain(void)
             {
                 return;

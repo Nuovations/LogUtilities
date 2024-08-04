@@ -1,3 +1,19 @@
+1.0.4 (2024-08-04)
+
+        * Addressed Doxygen warnings about resolvable links to 'Error',
+          'Info', and 'Debug' globals.
+
+        * Addressed an issue in which unit tests could not be linked
+          when the CppUnit package is / was not configured with
+          pkg-config.
+
+        * Handle GitHub Workflow Actions continuous integration (CI)
+          on macOS with Apple Silicon (that is, arm64).
+
+        * Updated nlbuild-autotools to 1.7.8.
+
+        * Updated Doxygen configuration for Doxygen 1.11.0.
+
 1.0.3 (2021-03-03)
 
         * Updated nlbuild-autotools to 1.6.14.
