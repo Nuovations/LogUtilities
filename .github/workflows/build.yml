@@ -61,7 +61,7 @@ jobs:
         bash <(curl -s https://codecov.io/bash) -g 'include/*' -g 'src/*' -G 'tests/*'
 
   macos:
-    runs-on: macos-10.15
+    runs-on: macos-latest
     name: "macOS ${{matrix.compiler['name']}}"
     strategy:
       matrix:
