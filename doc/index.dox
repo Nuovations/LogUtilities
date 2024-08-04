@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2021 Nuovation System Designs, LLC
+ *    Copyright (c) 2021-2024 Nuovation System Designs, LLC
  *    All rights reserved.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,7 +98,7 @@
  *              - @link Nuovations::Log::Writer::Stdout Standard Output @endlink
  *              - @link Nuovations::Log::Writer::Syslog Syslog @endlink
  *
- *  The #Error() singleton instance consists of:
+ *  The #Nuovations::Log::Error() singleton instance consists of:
  *
  *    - @link filter Filter @endlink
  *         - @link Nuovations::Log::Filter::Always Always @endlink
@@ -222,15 +222,15 @@
  * @subsubsection memory Memory
  *
  * The memory utilities in this package work either with an arbitrary
- * logger instance or with the global #Debug() logger singleton
- * instance and may be used to log the contents of memory as 1-, 2-,
- * 4- or 8-byte units in a format similar to the `od -A x -t x1z -v`
- * or `hexdump` command line interfaces.
+ * logger instance or with the global #Nuovations::Log::Debug() logger
+ * singleton instance and may be used to log the contents of memory as
+ * 1-, 2-, 4- or 8-byte units in a format similar to the `od -A x -t
+ * x1z -v` or `hexdump` command line interfaces.
  *
  * In addition, as with the function tracers, there is a conditional C
  * preprocessor macro, #LogMemoryDebug, that uses the global
- * #Debug() logger singleton instance and that is conditionally operative
- * when -DDEBUG=1 is asserted.
+ * #Nuovations::Log::Debug() logger singleton instance and that is
+ * conditionally operative when -DDEBUG=1 is asserted.
  *
  */
 
