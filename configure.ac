@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 #
-#    Copyright (c) 2021 Nuovation System Designs, LLC. All rights reserved.
+#    Copyright (c) 2021-2024 Nuovation System Designs, LLC. All rights reserved.
 #    Copyright 2016-2018 Nest Labs Inc. All Rights Reserved.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");
@@ -192,6 +192,7 @@ AC_CHECK_TOOL(STRIP, strip)
 
 # Check for other host tools.
 
+AC_PROG_EGREP
 AC_PROG_INSTALL
 AC_PROG_LN_S
 
@@ -336,7 +337,7 @@ if test "${nl_cv_build_tests}" = "yes"; then
     NL_WITH_REQUIRED_EXTERNAL_PACKAGE([CppUnit],
     [CPPUNIT],
     [cppunit],
-    [cppunit],
+    [-lcppunit],
     [
         # Check for required Boost (C++) headers.
 
@@ -354,6 +355,13 @@ if test "${nl_cv_build_tests}" = "yes"; then
     )
 
 fi
+
+# Add any Boost CPPFLAGS, LDFLAGS, and LIBS
+
+CPPFLAGS="${CPPFLAGS} ${BOOST_CPPFLAGS}"
+LIBS="${LIBS} ${BOOST_LIBS}"
+LDFLAGS="${LDFLAGS} ${BOOST_LDFLAGS}"
+
 
 # Add any code coverage CPPFLAGS and LIBS
 
