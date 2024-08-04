@@ -356,6 +356,13 @@ if test "${nl_cv_build_tests}" = "yes"; then
 
 fi
 
+# Add any Boost CPPFLAGS, LDFLAGS, and LIBS
+
+CPPFLAGS="${CPPFLAGS} ${BOOST_CPPFLAGS}"
+LIBS="${LIBS} ${BOOST_LIBS}"
+LDFLAGS="${LDFLAGS} ${BOOST_LDFLAGS}"
+
+
 # Add any code coverage CPPFLAGS and LIBS
 
 CPPFLAGS="${CPPFLAGS} ${NL_COVERAGE_CPPFLAGS}"
