@@ -38,6 +38,7 @@ EXTRA_DIST                                       = \
     Makefile-bootstrap                             \
     .clang-format                                  \
     .default-version                               \
+    .github/workflows/build.yml                    \
     bootstrap                                      \
     bootstrap-configure                            \
     build/clang-format/clang-format-pretty.options \
